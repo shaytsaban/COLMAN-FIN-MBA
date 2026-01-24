@@ -1,462 +1,545 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basics of Corporate Finance for Managers - Colman - 2026A</title>
+    <title>Basics of Corporate Finance - Colman 2026A</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(219, 39, 119, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(124, 58, 237, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #1e293b;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Modern Gradient Header */
+        .header-bg {
+            background: var(--primary-gradient);
             position: relative;
             overflow: hidden;
         }
-        .gradient-bg::before {
+
+        .header-bg::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.6;
+            animation: moveBack 60s linear infinite;
+        }
+
+        @keyframes moveBack {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 1000px 1000px;
+            }
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: white;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-radius: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #c084fc;
+        }
+
+        /* Buttons */
+        .btn-modern {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-modern::after {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            animation: gradient-shift 15s ease infinite;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
-        @keyframes gradient-shift {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
+
+        .btn-modern:hover::after {
+            left: 100%;
         }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        .video-container {
+
+        /* Video Container */
+        .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+            background: #0f172a;
         }
-        .video-container iframe {
+
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
         }
-        .lecture-card {
-            background: linear-gradient(to right, #f8fafc, #f1f5f9);
-            border-left: 4px solid #667eea;
-        }
-        .pulse-subtle {
-            animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse-subtle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.9; }
-        }
-        .section-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        /* Typography */
+        .gradient-text {
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-blue-50 text-gray-800">
-    <header class="gradient-bg text-white shadow-2xl relative">
-        <div class="container mx-auto px-6 py-16 text-center relative z-10">
-            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-3 drop-shadow-lg">Basics of Corporate Finance for Managers</h1>
-            <p class="text-xl md:text-2xl mt-2 font-light opacity-95">College of Management Academic Studies (COMAS)</p>
-            <div class="inline-block mt-6 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
-                <p class="text-lg font-semibold">📅 Semester 2026A</p>
+
+<body class="antialiased selection:bg-purple-100 selection:text-purple-800">
+
+    <header class="header-bg text-white pb-20 pt-16 relative">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-semibold mb-6">
+                College of Management Academic Studies (COMAS)
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 drop-shadow-sm">
+                Basics of Corporate Finance
+            </h1>
+            <p class="text-xl md:text-2xl font-light text-purple-100 mb-8">
+                For Managers • Semester 2026A
+            </p>
+
+            <!-- Live Zoom Links -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+                <a href="https://yvc-ac-il.zoom.us/j/6302238641?omn=82646832943" target="_blank"
+                    class="btn-modern group bg-white text-indigo-600 hover:bg-indigo-50 px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-3">
+                    <span class="flex h-3 w-3 relative">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
+                    </span>
+                    16:00 Group Zoom
+                </a>
+                <a href="https://yvc-ac-il.zoom.us/j/6302238641?omn=82646832943" target="_blank"
+                    class="btn-modern group bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-3">
+                    <span class="flex h-3 w-3 relative">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+                    </span>
+                    19:00 Group Zoom
+                </a>
             </div>
+        </div>
+
+        <!-- Curved divider -->
+        <div class="absolute bottom-0 w-full overflow-hidden leading-none z-10">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[60px]" data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    fill="#f8fafc"></path>
+            </svg>
         </div>
     </header>
-    <main class="container mx-auto px-6 py-12 max-w-7xl">
-        <!-- Welcome Section -->
-        <div class="bg-white p-10 rounded-3xl shadow-xl mb-10 card-hover border border-gray-100">
-            <h2 class="text-4xl font-bold section-header mb-6 pb-3 border-b-4 border-purple-200">Welcome! 👋</h2>
-            <p class="text-lg mb-6 leading-relaxed text-gray-700">This course provides managers and business professionals with essential tools for making sound financial decisions. We will explore the time value of money, investment evaluation techniques, and capital budgeting principles that are fundamental to strategic business planning. Whether you're managing projects, evaluating investments, or optimizing capital allocation, this course will equip you with the quantitative skills needed for effective financial management.</p>
-            
-            <!-- Zoom Buttons -->
-            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-                <a href="https://yvc-ac-il.zoom.us/j/6302238641?omn=82646832943" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105 text-center flex items-center justify-center gap-2" target="_blank">
-                    <span class="text-2xl">🎥</span>
-                    <span>Group 1 - 16:00 - Join LIVE Zoom</span>
+
+    <main class="container mx-auto px-6 -mt-10 relative z-20 pb-20 max-w-6xl">
+
+        <!-- Course Materials Section -->
+        <div class="glass-card p-1 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 mb-12">
+            <div class="bg-white rounded-[1.3rem] p-8 md:p-10 text-center">
+                <div
+                    class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-sm">
+                    📚
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Course Materials Library</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+                    Access the comprehensive digital notebook (Excel) containing all lecture notes, formulas, and
+                    solutions.
+                </p>
+                <a href="https://mypac-my.sharepoint.com/:x:/g/personal/shay_tsaban_pac_org_il/EcVFxjrif_tCmk1bmRwgnpkBnqzYxRIzVDFMHSXawx9sNQ"
+                    target="_blank"
+                    class="btn-modern inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-3 rounded-xl font-semibold hover:bg-slate-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    Download Digital Notebook
                 </a>
-                <a href="https://yvc-ac-il.zoom.us/j/6302238641?omn=82646832943" class="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105 text-center flex items-center justify-center gap-2" target="_blank">
-                    <span class="text-2xl">🎥</span>
-                    <span>Group 2 - 19:00 - Join LIVE Zoom</span>
-                </a>
+
+                <!-- NEW: Final Exams Section -->
+                <div class="mt-12 pt-10 border-t border-gray-100">
+                    <h3 class="text-lg font-bold text-gray-500 uppercase tracking-wide mb-6">Most Recent Final Exams
+                    </h3>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="https://mypac-my.sharepoint.com/:x:/g/personal/shay_tsaban_pac_org_il/IQAqL-oxZpbXSIcjpfGtqSgaAR7ldtOYDGEcCdh_tn0x6i0?e=eyqVKH"
+                            target="_blank"
+                            class="btn-modern bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-6 py-3 rounded-xl font-medium flex items-center justify-center gap-2">
+                            📝 Final Exam 10-02-2025 (With ANS)
+                        </a>
+                        <a href="https://mypac-my.sharepoint.com/:x:/g/personal/shay_tsaban_pac_org_il/IQCf3WlemrjDQI4HvpKfSf5FAb7wjnk3DWi5B1dL5nVvQow?e=MShv0f"
+                            target="_blank"
+                            class="btn-modern bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 px-6 py-3 rounded-xl font-medium flex items-center justify-center gap-2">
+                            📝 Final Exam 07-03-2025 (After Last Lecture)
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- Course Materials -->
-        <div class="bg-gradient-to-br from-purple-100 via-blue-50 to-indigo-100 p-10 rounded-3xl shadow-xl mb-10 border-2 border-purple-300 card-hover">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4 text-center flex items-center justify-center gap-3">
-                <span class="text-5xl">📚</span>
-                <span>Course Written Materials - Digital Notebook</span>
-            </h2>
-            <p class="text-lg text-gray-700 text-center mb-8 max-w-3xl mx-auto leading-relaxed">Your comprehensive Excel workbook serves as the complete resource for this course. This digital notebook includes all lecture notes, formulas, examples, practice problems, and solutions in one organized file. Everything you need to succeed in Corporate Finance is contained within this essential document.</p>
-            <div class="flex justify-center">
-                <a href="https://mypac-my.sharepoint.com/:x:/g/personal/shay_tsaban_pac_org_il/EcVFxjrif_tCmk1bmRwgnpkBnqzYxRIzVDFMHSXawx9sNQ" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg transition-all transform hover:scale-105 text-center flex items-center gap-3 text-lg" target="_blank">
-                    <span class="text-2xl">📥</span>
-                    <span>Access Digital Notebook</span>
-                </a>
-            </div>
-        </div>
-        <div class="grid lg:grid-cols-2 gap-8 mb-10">
-            <!-- Course Content -->
-            <div class="bg-white p-10 rounded-3xl shadow-xl card-hover border border-gray-100">
-                <h2 class="text-3xl font-bold section-header mb-6 flex items-center gap-3">
-                    <span class="text-4xl">🎓</span>
-                    <span>What You Will Learn</span>
-                </h2>
-                <p class="mb-6 text-gray-700 leading-relaxed">This course covers the fundamental principles of corporate finance with a practical, managerial focus. By the end of this course, you will master:</p>
-                <ul class="space-y-3 text-gray-700">
-                    <li class="flex items-start gap-3">
-                        <span class="text-purple-600 font-bold mt-1">✓</span>
-                        <span>Time value of money concepts and interest rate calculations</span>
+
+        <!-- Info Grid -->
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <!-- Learning Outcomes -->
+            <div class="glass-card p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <span class="bg-purple-100 text-purple-600 p-2 rounded-lg text-xl">🎓</span>
+                    What You Will Learn
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex gap-3 text-gray-600 text-sm md:text-base">
+                        <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        Time value of money & interest rate calculations
                     </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-purple-600 font-bold mt-1">✓</span>
-                        <span>Future value and present value computations for single amounts and annuities</span>
+                    <li class="flex gap-3 text-gray-600 text-sm md:text-base">
+                        <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        FV & PV for single amounts and annuities
                     </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-purple-600 font-bold mt-1">✓</span>
-                        <span>Investment project evaluation criteria including NPV, IRR, and Payback Period</span>
+                    <li class="flex gap-3 text-gray-600 text-sm md:text-base">
+                        <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        NPV, IRR, and Payback Period evaluation
                     </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-purple-600 font-bold mt-1">✓</span>
-                        <span>Construction and analysis of project cash flows</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-purple-600 font-bold mt-1">✓</span>
-                        <span>Cost of capital determination and weighted average cost of capital (WACC)</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-purple-600 font-bold mt-1">✓</span>
-                        <span>Capital budgeting decisions and project selection methods</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-purple-600 font-bold mt-1">✓</span>
-                        <span>Risk assessment and sensitivity analysis in financial decision-making</span>
+                    <li class="flex gap-3 text-gray-600 text-sm md:text-base">
+                        <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        Project cash flow analysis & WACC
                     </li>
                 </ul>
             </div>
-            <!-- Lecturer Info -->
-            <div class="bg-white p-10 rounded-3xl shadow-xl card-hover border border-gray-100">
-                <h2 class="text-3xl font-bold section-header mb-6 flex items-center gap-3">
-                    <span class="text-4xl">👨‍🏫</span>
-                    <span>About the Lecturer</span>
-                </h2>
-                <p class="text-gray-700 mb-4 leading-relaxed"><strong class="text-purple-700">Dr. Shay Tsaban, Ph.D.</strong> is a Certified Public Accountant (CPA) and Senior Lecturer at Peres Academic Center. He holds a Ph.D. from Ariel University, where his research focused on Corporate Happiness Responsibility (CHR) and the economics of happiness in business contexts. Dr. Tsaban's academic background bridges accounting, finance, and behavioral economics, with research exploring how financial policies and corporate practices influence organizational success and stakeholder well-being.</p>
-                <p class="text-gray-700 mb-4 leading-relaxed">With extensive professional experience in accounting and finance, Dr. Tsaban has served as a member of the Examination Committee of the Board of Accountants at the Ministry of Justice. His research has been published in academic journals and presented at international conferences, addressing topics such as corporate investment decisions, valuation, and the intersection of finance with social responsibility.</p>
-                <p class="text-gray-700 mb-6 leading-relaxed">Dr. Tsaban's teaching philosophy emphasizes practical problem-solving and real-world application of financial principles, making complex concepts accessible and relevant for future managers and business leaders.</p>
-                <div class="mt-6 pt-6 border-t-2 border-purple-100 bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-xl">
-                    <p class="text-gray-700 flex items-center gap-2">
-                        <span class="text-2xl">📧</span>
-                        <span><strong>Contact:</strong> <a href="mailto:shay.tsaban@gmail.com" class="text-purple-600 hover:text-purple-800 font-semibold hover:underline">shay.tsaban@gmail.com</a></span>
-                    </p>
+
+            <!-- Instructor -->
+            <div class="glass-card p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <span class="bg-indigo-100 text-indigo-600 p-2 rounded-lg text-xl">👨🏫</span>
+                    The Instructor
+                </h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                    <strong class="text-indigo-900">Dr. Shay Tsaban</strong> (CPA, Ph.D.) combines academic rigor with
+                    practical financial expertise. A Senior Lecturer at Peres Academic Center and former member of the
+                    Ministry of Justice's Board of Accountants.
+                </p>
+                <div class="mt-auto pt-4 border-t border-gray-100">
+                    <a href="mailto:shay.tsaban@gmail.com"
+                        class="flex items-center gap-2 text-indigo-600 font-medium hover:text-indigo-800">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        shay.tsaban@gmail.com
+                    </a>
                 </div>
             </div>
         </div>
-        <!-- Recordings Section - 16:00 Group -->
-        <div class="bg-white p-10 rounded-3xl shadow-xl mb-10 border border-gray-100">
-            <h2 class="text-4xl font-bold text-center mb-3 flex items-center justify-center gap-3 section-header">
-                <span class="text-5xl">📹</span>
-                <span>Recordings of 16:00 Group</span>
-            </h2>
-            <p class="text-center text-gray-600 mb-8 italic bg-blue-50 inline-block px-6 py-2 rounded-full mx-auto block w-fit">Are you studying at 19:00? Your lectures are below, under "Recordings of 19:00 Group"</p>
-            
-            <div class="space-y-6">
-                <!-- Lecture 1 - 16:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
-                        <span>Lecture 1 - Basics of Corporate Finance and FV Calculations of Lump Sum</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 4.11.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/luVu6nfZdKg?rel=0" title="Lecture 1 - 16:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Lecture 2 - 16:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
-                        <span>Lecture 2 - Exploring Complicated FV Calculations - Series of Cash Flows</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 11.11.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/JFcRnHQxX-E?rel=0" title="Lecture 2 - 16:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                 <!-- Lecture 3 - 16:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
-                        <span>Lecture 3 - Practical Implementations of FV Calculations</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 18.11.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/qaLACiRuV64?rel=0" title="Lecture 3 - 16:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Lecture 4 - 16:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
-                        <span>Lecture 4 - Basics of PV - Part 1</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 25.11.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/btj2RNqEb_4?rel=0" title="Lecture 4 - 16:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Lecture 5 - 16:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
-                        <span>Lecture 5 - Advanced Implications and Applications of PV Calculations</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 2.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/aOo8v8zPT7M?rel=0" title="Lecture 5 - 16:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Lecture 6 - 16:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">6</span>
-                        <span>Lecture 6 - Advanced Implications and Applications of PV Calculations - PV of Infinite Series of CF</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 9.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/Q1FRPRpRHeo?rel=0" title="Lecture 5 - 16:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                 <!-- Lecture 7 - 16:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">7</span>
-                        <span>Lecture 7 - PV Applications - Loans, Interest, Financial Planning</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 16.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/IijCkoI6D2g?rel=0" title="Lecture 5 - 16:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Lecture 9 - 16:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">8</span>
-                        <span>Lecture 8 - Leases</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 23.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/kPO9GD3PeYY?rel=0" title="Lecture 9 - 16:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
+
+        <!-- Video Sections -->
+        <h2 class="text-3xl font-bold text-center mb-10 gradient-text">Lecture Recordings</h2>
+
+        <div class="space-y-16">
+
+            <!-- 16:00 Group -->
+            <section>
+                <div class="flex items-center gap-4 mb-8">
+                    <span
+                        class="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">Group
+                        1</span>
+                    <h3 class="text-2xl font-bold text-gray-800">16:00 Sessions</h3>
                 </div>
 
-                <!-- Lecture 9 - 16:00 -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Lecture 1 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/luVu6nfZdKg" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 1: Basics & FV</h4>
+                        <span class="text-sm text-gray-500">4.11.2025</span>
+                    </article>
 
-  <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">9</span>
-                        <span>Lecture 9 - Projects Valuation - Single Projects (Part A)</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 30.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/FLZt_KKZV20?rel=0" title="Lecture 9 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
+                    <!-- Lecture 2 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/JFcRnHQxX-E" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 2: Series Cash Flows</h4>
+                        <span class="text-sm text-gray-500">11.11.2025</span>
+                    </article>
+
+                    <!-- Lecture 3 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/qaLACiRuV64" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 3: FV Implementation</h4>
+                        <span class="text-sm text-gray-500">18.11.2025</span>
+                    </article>
+
+                    <!-- Lecture 4 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/btj2RNqEb_4" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 4: Basics of PV</h4>
+                        <span class="text-sm text-gray-500">25.11.2025</span>
+                    </article>
+
+                    <!-- Lecture 5 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/aOo8v8zPT7M" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 5: Advanced PV</h4>
+                        <span class="text-sm text-gray-500">2.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 6 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/Q1FRPRpRHeo" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 6: Infinite Series</h4>
+                        <span class="text-sm text-gray-500">9.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 7 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/IijCkoI6D2g" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 7: Loans & Interest</h4>
+                        <span class="text-sm text-gray-500">16.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 8 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/kPO9GD3PeYY" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 8: Leases</h4>
+                        <span class="text-sm text-gray-500">23.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 9 (Moved to 16:00 group based on context, though listed under 19:00 previously, aligning numbering) -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/FLZt_KKZV20" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 9: Projects (Part A)</h4>
+                        <span class="text-sm text-gray-500">30.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 10 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/sOsSowSQqgY" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 10: Projects (Part B)</h4>
+                        <span class="text-sm text-gray-500">6.1.2026</span>
+                    </article>
+
+                    <!-- Lecture 11 -->
+                    <article class="glass-card p-4 hover:border-blue-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/xYXbDJypiL8" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 11: Sensitivity Analysis</h4>
+                        <span class="text-sm text-gray-500">13.1.2026</span>
+                    </article>
+
+                    <!-- Lecture 12 (NEW) -->
+                    <article class="glass-card p-4 border-2 border-indigo-500 relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 bg-indigo-500 text-white text-xs font-bold px-2 py-1 rounded-bl">
+                            NEW</div>
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/1p__yqZL1x8" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-indigo-900 leading-snug mb-1">Lecture 12: Reversal & Exam Structure
+                        </h4>
+                        <span class="text-sm text-indigo-600 font-medium">20.1.2026</span>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- 19:00 Group -->
+            <section>
+                <div class="flex items-center gap-4 mb-8">
+                    <span
+                        class="bg-purple-100 text-purple-700 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">Group
+                        2</span>
+                    <h3 class="text-2xl font-bold text-gray-800">19:00 Sessions</h3>
                 </div>
 
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Lecture 1 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/zzyMPbP1dXE" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 1: Basics & FV</h4>
+                        <span class="text-sm text-gray-500">4.11.2025</span>
+                    </article>
 
-                <!-- Lecture 10 - 16:00 -->
+                    <!-- Lecture 2 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/D_X5IhOg08A" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 2: Series Cash Flows</h4>
+                        <span class="text-sm text-gray-500">11.11.2025</span>
+                    </article>
 
-  <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">10</span>
-                        <span>Lecture 10 - Projects Valuation - Multiple Projects Ranking (Part B)</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 6.1.2026</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/sOsSowSQqgY?rel=0" title="Lecture 9 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
+                    <!-- Lecture 3 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/DLPyYriQIr0" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 3: Implementation</h4>
+                        <span class="text-sm text-gray-500">18.11.2025</span>
+                    </article>
+
+                    <!-- Lecture 4 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/bwn7b7UXiBA" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 4: Basics of PV</h4>
+                        <span class="text-sm text-gray-500">25.11.2025</span>
+                    </article>
+
+                    <!-- Lecture 5 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/R4MzFwynxqU" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 5: Advanced PV</h4>
+                        <span class="text-sm text-gray-500">2.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 6 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/Bqd-mTz5oY4" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 6: Infinite Series</h4>
+                        <span class="text-sm text-gray-500">9.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 7 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/nvGqVlu9USw" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 7: Loans</h4>
+                        <span class="text-sm text-gray-500">16.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 8 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/gxgxNHI31C4" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 8: Leases</h4>
+                        <span class="text-sm text-gray-500">23.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 9 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/us67VlmW_xs" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 9: Projects (A)</h4>
+                        <span class="text-sm text-gray-500">30.12.2025</span>
+                    </article>
+
+                    <!-- Lecture 10 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/bHzACdwJdOg" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 10: Projects (B)</h4>
+                        <span class="text-sm text-gray-500">6.1.2026</span>
+                    </article>
+
+                    <!-- Lecture 11 -->
+                    <article class="glass-card p-4 hover:border-purple-300">
+                        <div class="video-wrapper mb-4">
+                            <iframe src="https://www.youtube.com/embed/lz73UMN2m4o" allowfullscreen></iframe>
+                        </div>
+                        <h4 class="font-bold text-gray-900 leading-snug mb-1">Lecture 11: Sensitivity</h4>
+                        <span class="text-sm text-gray-500">13.1.2026</span>
+                    </article>
+
                 </div>
-
-                     <!-- Lecture 11 - 16:00 -->
-
-  <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">11</span>
-                        <span>Lecture 11 - Projects Valuation - Sensitivty Analysis using Data Table in Excel</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 13.1.2026</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/xYXbDJypiL8?rel=0" title="Lecture 9 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-
-            </div>
+            </section>
         </div>
-        <!-- Recordings Section - 19:00 Group -->
-        <div class="bg-white p-10 rounded-3xl shadow-xl mb-10 border border-gray-100">
-            <h2 class="text-4xl font-bold text-center mb-3 flex items-center justify-center gap-3 section-header">
-                <span class="text-5xl">📹</span>
-                <span>Recordings of 19:00 Group</span>
-            </h2>
-            <p class="text-center text-gray-600 mb-8 italic bg-blue-50 inline-block px-6 py-2 rounded-full mx-auto block w-fit">Are you studying at 16:00? Your lectures are above, under "Recordings of 16:00 Group"</p>
-            
-            <div class="space-y-6">
-                <!-- Lecture 1 - 19:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
-                        <span>Lecture 1 - Basics of Corporate Finance and FV Calculations of Lump Sum</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 4.11.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/zzyMPbP1dXE?rel=0" title="Lecture 1 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Lecture 2 - 19:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
-                        <span>Lecture 2 - Exploring Complicated FV Calculations - Series of Cash Flows</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 11.11.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/D_X5IhOg08A?rel=0" title="Lecture 2 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                  <!-- Lecture 3 - 19:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
-                        <span>Lecture 3 - Practical Implementations of FV Calculations</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 18.11.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/DLPyYriQIr0?rel=0" title="Lecture 3 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                 <!-- Lecture 4 - 19:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
-                        <span>Lecture 4 - Basics of PV - Part 1</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 25.11.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/bwn7b7UXiBA?rel=0" title="Lecture 4 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Lecture 5 - 19:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">5</span>
-                        <span>Lecture 5 - Advanced Implications and Applications of PV Calculations</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 2.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/R4MzFwynxqU?rel=0" title="Lecture 5 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-   <!-- Lecture 6 - 19:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">6</span>
-                        <span>Lecture 6 - Advanced Implications and Applications of PV Calculations - PV of Infinite Series</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 9.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/Bqd-mTz5oY4?rel=0" title="Lecture 5 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                 <!-- Lecture 7 - 19:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">7</span>
-                        <span>Lecture 7 - PV Applications - Loans, Interest, Financial Planning</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 16.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/nvGqVlu9USw?rel=0" title="Lecture 5 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Lecture 8 - 19:00 -->
-                <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">8</span>
-                        <span>Lecture 8 - Leases</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 23.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/gxgxNHI31C4?rel=0" title="Lecture 9 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
 
-                <!-- Lecture 9 - 19:00 -->
-
-                 <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">9</span>
-                        <span>Lecture 9 - Projects Valuation - Single Projects (Part A)</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 30.12.2025</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/us67VlmW_xs?rel=0" title="Lecture 9 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-
- <!-- Lecture 10 - 19:00 -->
-
-  <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">10</span>
-                        <span>Lecture 10 - Projects Valuation - Multiple Projects Ranking (Part B)</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 6.1.2026</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/bHzACdwJdOg?rel=0" title="Lecture 9 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-
-                  <div class="lecture-card p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">11</span>
-                        <span>Lecture 11 - Projects Valuation - Sensitivity Analysis using Data Table in Excel</span>
-                    </h3>
-                    <p class="text-gray-600 mb-4 text-sm">📅 13.1.2026</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/lz73UMN2m4o?rel=0" title="Lecture 9 - 19:00 Group" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-
-
-                
-            </div>
-        </div>
     </main>
-    <footer class="gradient-bg text-white py-8 shadow-2xl relative">
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <p class="text-lg mb-2">For any questions or clarifications, feel free to reach out.</p>
-            <p class="text-lg">📧 Contact: <a href="mailto:shay.tsaban@gmail.com" class="font-semibold hover:underline bg-white/20 px-4 py-1 rounded-full inline-block transition-all hover:bg-white/30">shay.tsaban@gmail.com</a></p>
-        </div>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center mt-20">
+        <p class="mb-4 font-semibold text-slate-200">Good Luck with your studies!</p>
+        <p class="text-sm opacity-75">Dr. Shay Tsaban - COMAS 2026A</p>
     </footer>
+
 </body>
+
 </html>
